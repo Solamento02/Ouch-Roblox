@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0nkqyneklv21"]
+
+[ext_resource type="Texture2D" uid="uid://dpo2dsrtgbvrn" path="res://fundo/primeiro-normal.png" id="1_8t5ro"]
+[ext_resource type="Script" path="res://sound_ouch.gd" id="2_l7h7a"]
+[ext_resource type="AudioStream" uid="uid://dpj0s7clkirx" path="res://Roblox Audio Shortened.mp3" id="2_qqmsh"]
+[ext_resource type="Texture2D" uid="uid://cr8l0wvexkmyc" path="res://fundo/button-normal.png" id="3_5jxp4"]
+[ext_resource type="Texture2D" uid="uid://djilnstcrgv3y" path="res://fundo/button_pressed.png" id="4_6phms"]
+
+[node name="main" type="Node2D"]
+
+[node name="fundo" type="TextureRect" parent="."]
+offset_right = 301.0
+offset_bottom = 200.0
+texture = ExtResource("1_8t5ro")
+
+[node name="sound" type="Node2D" parent="fundo"]
+script = ExtResource("2_l7h7a")
+
+[node name="Button" type="TextureButton" parent="fundo/sound"]
+offset_left = 85.0
+offset_top = 78.0
+offset_right = 191.0
+offset_bottom = 116.0
+texture_normal = ExtResource("3_5jxp4")
+texture_pressed = ExtResource("4_6phms")
+
+[node name="ouch" type="AudioStreamPlayer2D" parent="fundo/sound"]
+position = Vector2(84, 77)
+stream = ExtResource("2_qqmsh")
+
+[connection signal="pressed" from="fundo/sound/Button" to="fundo/sound" method="_on_button_pressed"]
